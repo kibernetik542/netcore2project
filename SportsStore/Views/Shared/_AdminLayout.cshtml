@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    </environment>
+    <style>
+        .input-validation-error {
+            border-color: red;
+            background: #fee;
+        }
+    </style>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+</head>
+<body class="container">
+    <div class="alert alert-info well-lg">
+        <h4><b>@ViewBag.Title</b></h4>
+        <a class="btn btn-default pull-right" asp-action="Logout" asp-controller="Account">
+            <i class="fa fa-sign-out text-danger"></i>&nbsp;Log Out
+        </a>
+    </div>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success">@TempData["message"]</div>
+    }
+    @RenderBody()
+</body>
+</html>

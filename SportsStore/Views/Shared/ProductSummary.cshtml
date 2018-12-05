@@ -1,0 +1,25 @@
+﻿@model Product
+
+<style>
+    #gamebox {
+        border: 1px solid #ccc;
+        margin-bottom: 8px;
+    }
+</style>
+
+<div class="container" id="gamebox">
+    <h3 class="text-primary">
+        @Model.Name
+    </h3>
+    <span class="label label-primary" style="float:right">
+        <h6>@Model.Price.ToString("c")</h6>
+    </span>
+    <form id="@Model.ProductId" asp-action="AddToCart" asp-controller="Cart" method="post">
+        <input type="hidden" asp-for="ProductId"/>
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+        <div class="well">
+            @Model.Description
+            <button type="submit" class="btn btn-info btn-sm pull-right" style="float: right">Add to Cart</button>
+        </div>
+    </form>
+</div>
